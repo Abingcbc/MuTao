@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".changeavaterview.MainActivity">
+
+    <ViewFlipper
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_view">
+        <ImageView
+            android:id="@+id/iv_avater"
+            android:layout_width="wrap_content"
+            android:layout_height="700px"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/icon"
+            android:layout_marginTop="150px"/>
+    </ViewFlipper>
+    <ViewFlipper
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_under">
+        <ImageView
+            android:id="@+id/text_avater"
+            android:layout_width="wrap_content"
+            android:layout_height="33px"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/text"
+            android:layout_marginTop="700px"/>
+    </ViewFlipper>
+    <ImageButton
+        android:layout_width="134px"
+        android:layout_height="128px"
+        android:id="@+id/btn_change"
+        android:background="@drawable/camara"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="250px"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
