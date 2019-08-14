@@ -80,6 +80,16 @@
                 android:layout_above="@+id/button_container"
                 android:padding="4dp"
                 android:clipToPadding="false">
+
+            <ImageButton
+                    android:layout_width="134px"
+                    android:layout_height="128px"
+                    android:id="@+id/btn_community"
+                    android:background="@drawable/community"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="50px"
+                    android:layout_alignParentBottom="true" />
+
         </com.yuyakaido.android.cardstackview.CardStackView>
 
     </RelativeLayout>
