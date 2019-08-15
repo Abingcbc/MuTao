@@ -4,6 +4,7 @@ from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug import secure_filename
 import requests
 import json
+import pymysql
 
 CURRENT_PATH = os.getcwd()
 
@@ -23,6 +24,50 @@ requestPara='https://api.jisuapi.com/jinyifanyi/word?appkey='+synonymKey+'&word=
     # return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
+@app.route('/register',methods=['POST'])
+def register():
+    # 在数据库里寻找是否已经注册
+    # 若是没有注册
+    # 自行更改数据库密码
+    username = request.form['username']
+    password = request.form['password']
+    conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", passwd="friday", db="mutao", charset="utf8")
+    cursor = conn.cursor()
+    count = cursor.execute("select * from user where username = %s", (username,))
+    if count:
+        cursor.close()
+        conn.close()
+        return json.dumps({"is_success":-1})
+    else:
+        sql=cursor.execute('insert into user values(%s,%s)',(username,password))
+        if sql:
+            conn.commit()
+            cursor.close()
+            conn.close()
+            return json.dumps({"is_success":1})
+        else:
+            cursor.close()
+            conn.close()
+            return json.dumps({"is_success":-1})
+
+@app.route('/login',methods=['POST'])
+def login():
+    #在数据库里寻找是否存在
+    username = request.form['username']
+    password = request.form['password']
+    conn=pymysql.connect(host="127.0.0.1",port=3306,user="root",password="friday",database="mutao",harset="utf8")
+    cursor=conn.cursor
+    ret=cursor.execute("select * from user where username=%s;",(userName,))
+    if ret:
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return json.dumps({"is_success":1})
+        #可以加一个全局变量来保证不重复登录
+    else:
+        cursor.close()
+        conn.close()
+        return json.dumps({"is_success":-1})
 
 @app.route('/', methods=['POST'])
 def controller():

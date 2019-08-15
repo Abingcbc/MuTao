@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call?, response: Response?) {
                 if (response!!.isSuccessful) {
                     var parser = JsonParser()
-                    var is_success = parser.parse(response.body().toString()).asJsonObject["is_success"].asInt
+                    var is_success = parser.parse(response.body()!!.string()).asJsonObject["is_success"].asInt
                     if (is_success == -1){
                         login.yum("Username has already exited!").show()
                     }
@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call?, response: Response?) {
                 if (response!!.isSuccessful) {
                     var parser = JsonParser()
-                    var is_success = parser.parse(response.body().toString()).asJsonObject["is_success"].asInt
+                    var is_success = parser.parse(response.body()!!.string()).asJsonObject["is_success"].asInt
                     if (is_success == -1){
                         login.yum("Username or password is wrong!").show()
                     }
