@@ -15,16 +15,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".PoemActivity">
+        </activity>
+        <activity android:name=".AiActivity">
+        </activity>
+        <activity
+                android:name=".changeavaterview.MainActivity"
+                android:theme="@style/AppTheme.NoActionBarWithBackGround">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity
-                android:name=".changeavaterview.MainActivity"
-                android:theme="@style/AppTheme.NoActionBarWithBackGround">
         </activity>
         <activity
                 android:name=".MainActivity2"

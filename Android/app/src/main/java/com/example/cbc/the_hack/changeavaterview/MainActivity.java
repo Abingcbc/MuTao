@@ -10,21 +10,23 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.Toast;
-import android.widget.ViewFlipper;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import com.example.cbc.the_hack.AiActivity;
 import com.example.cbc.the_hack.MainActivity2;
+import com.example.cbc.the_hack.PoemActivity;
 import com.example.cbc.the_hack.R;
 import com.example.cbc.the_hack.callback.PhotoCallBack;
 import com.example.cbc.the_hack.util.FileUtils;
+import com.example.cbc.the_hack.util.NaviDebug;
 import com.example.cbc.the_hack.util.OkHttp3Util;
 import com.example.cbc.the_hack.view.AlertView;
 import com.tbruyelle.rxpermissions.RxPermissions;
@@ -36,6 +38,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private File file;
     private ViewFlipper textView;
     private ViewFlipper textViewUnder;
+    private ImageButton buttonAi;
 
     private static final int TAKE_PICTURE = 0;
     private static OkHttpClient okHttpClient = null;
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        buttonAi=findViewById(R.id.b_ai);
         ivAvater=findViewById(R.id.iv_avater);
         textView=findViewById(R.id.text_view);
         textViewUnder=findViewById(R.id.text_view_under);
@@ -72,7 +77,13 @@ public class MainActivity extends AppCompatActivity {
         textViewUnder.showPrevious();
 
 
-
+        buttonAi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, AiActivity.class);
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.btn_change).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,11 +124,17 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Intent intent0=new Intent(MainActivity.this, MainActivity2.class);
                     Bundle bundle=new Bundle();
-                    bundle.putString("response",response.body().string());
+                    String s=response.body().string();
+                    bundle.putString("response",s);
                     intent0.putExtras(bundle);
                     startActivity(intent0);
                 }else{
-                    Toast.makeText(MainActivity.this,"无响应",Toast.LENGTH_SHORT).show();
+                    Looper.prepare();
+                    Toast.makeText(MainActivity.this, "服务器无响应!请稍后再试!", Toast.LENGTH_SHORT).show();
+                    String log=response.body().toString();
+                    NaviDebug naviDebug=NaviDebug.getInstance();
+                    naviDebug.saveLog(log);
+                    Looper.loop();
                 }
                 }});
     }
@@ -163,12 +180,16 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } else if (position == 1) {
                         // 拍照
+                        Log.d("hei", "Here: *************0");
                         if (checkPermission(CAMERA_PERMISSION)) {
+                            Log.d("hei", "Here: *************1");
                             photo();
                         } else {//申请拍照权限和读取权限
+                            Log.d("hei", "Here: *************2");
                             startRequestPhotoPermision();
                         }
                     } else if(position==2){
+                        Log.d("hei", "Here: *************3");
                         uploadAvater();
                     }
                 }).show();
@@ -252,7 +273,6 @@ public class MainActivity extends AppCompatActivity {
             }
             if (file != null) {
                 path = file.getPath();
-
                 photoUri = Uri.fromFile(file);
                 if (Build.VERSION.SDK_INT >= 24) {
                     photoUri = FileProvider.getUriForFile(this,"com.example.cbc.the_hack.fileProvider", file);
