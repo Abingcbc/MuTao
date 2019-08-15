@@ -29,4 +29,8 @@
     <color name="bgColor_actionsheet_cancel_nor">#ffffff</color>
     <!--界面背景灰色-->
     <color name="bgColor_activity">#F1F1F1</color>
+    <color name="material_login_login_color">#FFF0F5</color>
+    <color name="material_login_register_color">#C09D7B</color>
+    <color name="material_login_login_error_color">#FFF0F5</color>
+    <color name="material_login_register_error_color">#C09D7B</color>
 </resources>
