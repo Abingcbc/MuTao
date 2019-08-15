@@ -39,11 +39,9 @@ dependencies {
     implementation 'io.reactivex:rxjava:1.2.3'
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.6.1'
-    implementation "com.xwray:groupie:2.4.0"
-    implementation "com.xwray:groupie-kotlin-android-extensions:2.4.0"
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     implementation "com.google.code.gson:gson:2.8.2"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 
@@ -54,5 +52,7 @@ dependencies {
     implementation "com.yuyakaido.android:card-stack-view:2.3.4"
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.beust:klaxon:5.0.1'
-    implementation 'com.github.shem8:material-login:2.1.1'
+
+
+    implementation 'com.github.HITGIF:TextFieldBoxes:1.4.4'
 }

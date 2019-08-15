@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ng1"
+                tools:context=".AiActivity">
+    <ImageButton
+            android:id="@+id/b_backtomain"
+            android:layout_width="40dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/back2"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"/>
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true">
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="作品类型:"
+                    android:layout_marginTop="6dp"/>
+
+            <RadioGroup
+                    android:id="@+id/rg_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true">
+
+                <RadioButton
+                        android:id="@+id/rb_JJ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="绝句" />
+
+                <RadioButton
+                        android:id="@+id/rb_SC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 词"
+                />
+            </RadioGroup>
+        </LinearLayout>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true">
+            <LinearLayout
+                    android:id="@+id/layout_JJ"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="绝句类型:"/>
+                    <RadioGroup
+                            android:id="@+id/word_JJ"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true">
+
+                        <RadioButton
+                                android:id="@+id/word_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="五言" />
+
+                        <RadioButton
+                                android:id="@+id/word_7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="七言"
+                        />
+                    </RadioGroup>
+                </LinearLayout>
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/text_field_boxes_jj"
+                        app:manualValidateError="true"
+                        android:layout_width="180dp"
+                        android:layout_height="100dp"
+                        app:helperText="请输入一个关键词"
+                        app:hasClearButton="true"
+                        app:labelText="关键词">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/extended_edit_text_jj"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/layout_SC"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="词牌名:"/>
+
+                    <Spinner
+                            android:id="@+id/spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"/>
+                </LinearLayout>
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/text_field_boxes_sc"
+                        app:manualValidateError="true"
+                        android:layout_width="180dp"
+                        android:layout_height="100dp"
+                        app:helperText="请输入关键词(空格隔开)"
+                        app:hasClearButton="true"
+                        app:labelText="关键词">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/extended_edit_text_sc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp">
+
+            <Button
+                    android:background="#66CC33"
+                    android:id="@+id/b_create"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="创作"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

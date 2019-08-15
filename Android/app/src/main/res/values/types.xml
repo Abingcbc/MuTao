@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types">
+        <item>归字谣</item>
+        <item>如梦令</item>
+        <item>梧桐影</item>
+        <item>渔歌子</item>
+        <item>捣练子</item>
+        <item>忆江南</item>
+        <item>忆王孙</item>
+        <item>河满子</item>
+        <item>思帝乡</item>
+        <item>醉吟商</item>
+        <item>卜算子</item>
+        <item>点绛唇</item>
+        <item>踏莎行</item>
+        <item>画堂春</item>
+        <item>浣溪沙</item>
+        <item>武陵春</item>
+        <item>采桑子</item>
+        <item>海棠春</item>
+        <item>苏幕遮</item>
+        <item>蝶恋花</item>
+    </string-array>
+</resources>
