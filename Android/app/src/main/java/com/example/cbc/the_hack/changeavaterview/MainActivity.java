@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     intent0.putExtras(bundle);
                     startActivity(intent0);
                 }else{
-                    Toast.makeText(MainActivity.this,"无响应",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this,"无响应",Toast.LENGTH_SHORT).show();
                 }
                 }});
     }
