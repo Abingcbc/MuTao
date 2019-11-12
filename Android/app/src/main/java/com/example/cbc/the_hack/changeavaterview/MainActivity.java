@@ -20,16 +20,17 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import com.example.cbc.the_hack.AiActivity;
+
 import com.example.cbc.the_hack.MainActivity2;
-import com.example.cbc.the_hack.PoemActivity;
 import com.example.cbc.the_hack.R;
 import com.example.cbc.the_hack.callback.PhotoCallBack;
 import com.example.cbc.the_hack.util.FileUtils;
 import com.example.cbc.the_hack.util.NaviDebug;
 import com.example.cbc.the_hack.util.OkHttp3Util;
 import com.example.cbc.the_hack.view.AlertView;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 import com.tbruyelle.rxpermissions.RxPermissions;
+
 import okhttp3.*;
 import rx.functions.Action1;
 
@@ -38,7 +39,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
     private File file;
     private ViewFlipper textView;
     private ViewFlipper textViewUnder;
-    private ImageButton buttonAi;
+    private CircularProgressView progressView;
+    private ImageButton photoButton;
+
 
     private static final int TAKE_PICTURE = 0;
     private static OkHttpClient okHttpClient = null;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonAi=findViewById(R.id.b_ai);
+//        buttonAi=findViewById(R.id.b_ai);
         ivAvater=findViewById(R.id.iv_avater);
         textView=findViewById(R.id.text_view);
         textViewUnder=findViewById(R.id.text_view_under);
@@ -76,15 +78,19 @@ public class MainActivity extends AppCompatActivity {
         textView.showPrevious();
         textViewUnder.showPrevious();
 
+        progressView = findViewById(R.id.progress_view);
 
-        buttonAi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, AiActivity.class);
-                startActivity(intent);
-            }
-        });
-        findViewById(R.id.btn_change).setOnClickListener(new View.OnClickListener() {
+        photoButton = findViewById(R.id.btn_change);
+
+
+//        buttonAi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(MainActivity.this, AiActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        photoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeAvater();
@@ -97,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateView(name, context, attrs);
     }
 
-    private void uploadAvater() throws IOException {
+    private void uploadPicture() throws IOException {
         if(path==""){
             Toast.makeText(this,"未传入图片",Toast.LENGTH_LONG).show();
             //Intent intent0=new Intent(MainActivity2.this,SecondActivity.class);
@@ -110,13 +116,22 @@ public class MainActivity extends AppCompatActivity {
         File file = new File(path);
         HashMap<String, String> map = new HashMap<>();
         map.put("token", "1234");
-        Log.d("---", "uploadAvater: 22222");
+        Log.d("---", "uploadPicture: 22222");
+
+        progressView.setVisibility(View.VISIBLE);
+        photoButton.setClickable(false);
+
 
         OkHttp3Util.uploadFile(upload_api, file, "hhhhh.jpg",map, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("+++", "onFailure: " + e.getMessage());
                 e.printStackTrace();
+                runOnUiThread(() -> {
+                    progressView.setVisibility(View.GONE);
+                    photoButton.setClickable(true);
+                });
+                Toast.makeText(MainActivity.this, "服务器无响应!请稍后再试!", Toast.LENGTH_LONG).show();
             }
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
@@ -127,13 +142,21 @@ public class MainActivity extends AppCompatActivity {
                     String s=response.body().string();
                     bundle.putString("response",s);
                     intent0.putExtras(bundle);
+                    runOnUiThread(() -> {
+                        progressView.setVisibility(View.GONE);
+                        photoButton.setClickable(true);
+                    });
                     startActivity(intent0);
                 }else{
                     Looper.prepare();
-                    Toast.makeText(MainActivity.this, "服务器无响应!请稍后再试!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "服务器无响应!请稍后再试!", Toast.LENGTH_LONG).show();
                     String log=response.body().toString();
                     NaviDebug naviDebug=NaviDebug.getInstance();
                     naviDebug.saveLog(log);
+                    runOnUiThread(() -> {
+                        progressView.setVisibility(View.GONE);
+                        photoButton.setClickable(true);
+                    });
                     Looper.loop();
                 }
                 }});
@@ -173,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
                             Intent i = new Intent(
                                     // 相册
                                     Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                            Log.d("sdsa", "comfireImgSelection:sdadsa ");
                             startActivityForResult(i, RESULT_LOAD_IMAGE);
                         } else {//申请拍照权限和读取权限
                             startRequestrReadPermision();
@@ -190,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } else if(position==2){
                         Log.d("hei", "Here: *************3");
-                        uploadAvater();
+                        uploadPicture();
                     }
                 }).show();
     }

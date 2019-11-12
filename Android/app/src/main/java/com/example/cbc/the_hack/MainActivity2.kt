@@ -25,7 +25,7 @@ class MainActivity2 : AppCompatActivity(), CardStackListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main3)
+        setContentView(R.layout.activity_main2)
         var response = intent.getStringExtra("response")
         var parser = JsonParser()
         var jsonArray = parser.parse(response).asJsonArray
@@ -67,8 +67,8 @@ class MainActivity2 : AppCompatActivity(), CardStackListener {
 
     private fun setupNavigation() {
         // Toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+//        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+//        setSupportActionBar(toolbar)
     }
 
     private fun setupCardStackView() {

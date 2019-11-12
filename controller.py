@@ -96,7 +96,7 @@ def controller():
     result = json.loads(r.text)
     poems = []
     for poem in result['hits']['hits']:
-        if poem['_score'] < 35:
+        if poem['_score'] < 45:
             break
         poems.append({'body': poem['_source']['body'],
                       'title': poem['_source']['title'],

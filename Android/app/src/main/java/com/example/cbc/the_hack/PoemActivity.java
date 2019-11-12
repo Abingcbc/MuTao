@@ -15,7 +15,7 @@ import com.google.gson.JsonParser;
 import org.json.JSONObject;
 
 public class PoemActivity extends AppCompatActivity {
-    private ImageButton imageButtonBack;
+//    private ImageButton imageButtonBack;
     private ImageButton imageButtonMain;
     private TextView poemBody;
     private String content;
@@ -24,7 +24,7 @@ public class PoemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poem);
-        imageButtonBack=findViewById(R.id.b_back);
+//        imageButtonBack=findViewById(R.id.b_back);
         imageButtonMain=findViewById(R.id.b_main);
         poemBody=findViewById(R.id.poem_body);
 
@@ -42,13 +42,13 @@ public class PoemActivity extends AppCompatActivity {
         poemBody.setTypeface(tf);
         poemBody.setText(content.replace("\\n","\n").replace("\"",""));
 
-        imageButtonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(PoemActivity.this, AiActivity.class);
-                startActivity(intent);
-            }
-        });
+//        imageButtonBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(PoemActivity.this, AiActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         imageButtonMain.setOnClickListener(new View.OnClickListener() {
             @Override

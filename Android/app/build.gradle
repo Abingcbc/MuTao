@@ -56,4 +56,6 @@ dependencies {
 
 
     implementation 'com.github.HITGIF:TextFieldBoxes:1.4.4'
+
+    implementation 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
 }
