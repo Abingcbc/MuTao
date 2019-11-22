@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.cbc.the_hack">
+        package="com.example.cbc.the_hack">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
             android:allowBackup="true"
@@ -15,26 +15,24 @@
             android:roundIcon="@drawable/icon_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".CommunityActivity">
 
-        <activity android:name=".LoginActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PoemActivity">
+        <activity android:name=".LoginActivity">
         </activity>
-        <activity android:name=".AiActivity">
-        </activity>
+        <activity android:name=".PoemActivity"></activity>
+        <activity android:name=".AiActivity"></activity>
         <activity
                 android:name=".changeavaterview.MainActivity"
-                android:theme="@style/AppTheme.NoActionBarWithBackGround">
-        </activity>
+                android:theme="@style/AppTheme.NoActionBarWithBackGround"></activity>
         <activity
                 android:name=".MainActivity2"
-                android:theme="@style/AppTheme.NoActionBarWithBackGround">
-        </activity>
+                android:theme="@style/AppTheme.NoActionBarWithBackGround"></activity>
 
         <provider
                 android:name="androidx.core.content.FileProvider"
@@ -43,7 +41,7 @@
                 android:grantUriPermissions="true">
             <meta-data
                     android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/file_paths"/>
+                    android:resource="@xml/file_paths" />
         </provider>
     </application>
 
