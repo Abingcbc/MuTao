@@ -41,7 +41,7 @@
                     android:layout_marginRight="32dp"
                     android:layout_marginEnd="32dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/rewind_blue_24dp"
+                    android:src="@drawable/social"
                     app:backgroundTint="@android:color/white"
                     app:fabSize="mini"
                     app:rippleColor="#225BC9FA"/>
