@@ -19,7 +19,8 @@ class CardStackAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val poem = poems[position]
+        var circular = position % poems.size
+        val poem = poems[circular]
         holder.title.text = poem.title
         holder.dynasty.text = poem.dynasty
         holder.author.text = poem.author
@@ -27,7 +28,7 @@ class CardStackAdapter(
     }
 
     override fun getItemCount(): Int {
-        return poems.size
+        return Integer.MAX_VALUE
     }
 
     fun setSpots(poems: List<Poem>) {

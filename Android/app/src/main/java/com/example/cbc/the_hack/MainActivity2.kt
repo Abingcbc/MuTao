@@ -132,12 +132,13 @@ class MainActivity2 : AppCompatActivity(), CardStackListener {
     }
 
     private fun paginate() {
-        val old = adapter.getSpots()
-        val new = old.plus(createPoems())
-        val callback = PoemDiffCallback(old, new)
-        val result = DiffUtil.calculateDiff(callback)
-        adapter.setSpots(new)
-        result.dispatchUpdatesTo(adapter)
+//        val old = adapter.getSpots()
+//        val new = old.plus(createPoems())
+//        Log.d("CardStackView", "Old: $old")
+//        val callback = PoemDiffCallback(old, new)
+//        val result = DiffUtil.calculateDiff(callback)
+//        result.dispatchUpdatesTo(adapter)
+//        adapter.setSpots(new)
     }
 
 
