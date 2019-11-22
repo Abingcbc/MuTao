@@ -16,12 +16,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".CommunityActivity">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
         </activity>
@@ -29,7 +23,13 @@
         <activity android:name=".AiActivity"></activity>
         <activity
                 android:name=".changeavaterview.MainActivity"
-                android:theme="@style/AppTheme.NoActionBarWithBackGround"></activity>
+                android:theme="@style/AppTheme.NoActionBarWithBackGround">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
                 android:name=".MainActivity2"
                 android:theme="@style/AppTheme.NoActionBarWithBackGround"></activity>

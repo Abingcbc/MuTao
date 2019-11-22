@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/panel_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:background="@drawable/card_shadow"
+        android:orientation="vertical">
+        <com.etsy.android.grid.util.DynamicHeightImageView
+            android:id="@+id/img_dht"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.etsy.android.grid.util.DynamicHeightTextView
+            android:id="@+id/txt_line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <ImageButton
+        android:id="@+id/btn_go"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginTop="25px"
+        android:layout_marginRight="55px"
+        android:background="@drawable/star2"
+        android:layout_gravity="top|right"
+        />
+</FrameLayout>

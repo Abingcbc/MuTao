@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import com.example.cbc.the_hack.CommunityActivity;
 import com.example.cbc.the_hack.MainActivity2;
 import com.example.cbc.the_hack.R;
 import com.example.cbc.the_hack.callback.PhotoCallBack;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewFlipper textViewUnder;
     private CircularProgressView progressView;
     private ImageButton photoButton;
+    private ImageButton socialButton;
 
 
     private static final int TAKE_PICTURE = 0;
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         progressView = findViewById(R.id.progress_view);
 
         photoButton = findViewById(R.id.btn_change);
+        socialButton = findViewById(R.id.btn_community);
 
 
 //        buttonAi.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +97,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeAvater();
+            }
+        });
+        socialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent0=new Intent(MainActivity.this, CommunityActivity.class);
+                startActivity(intent0);
             }
         });
     }
@@ -130,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     progressView.setVisibility(View.GONE);
                     photoButton.setClickable(true);
+                    Toast.makeText(MainActivity.this, "服务器无响应!请稍后再试!", Toast.LENGTH_LONG).show();
                 });
-                Toast.makeText(MainActivity.this, "服务器无响应!请稍后再试!", Toast.LENGTH_LONG).show();
             }
             @Override
             public void onResponse(Call call, final Response response) throws IOException {

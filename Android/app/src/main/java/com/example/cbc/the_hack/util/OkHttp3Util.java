@@ -46,9 +46,9 @@ public class OkHttp3Util {
                     int cacheSize = 10 * 1024 * 1024;
 
                     okHttpClient = new OkHttpClient.Builder()//构建器
-                            .connectTimeout(15, TimeUnit.SECONDS)//连接超时
-                            .writeTimeout(20, TimeUnit.SECONDS)//写入超时
-                            .readTimeout(20, TimeUnit.SECONDS)//读取超时
+                            .connectTimeout(60, TimeUnit.SECONDS)//连接超时
+                            .writeTimeout(60, TimeUnit.SECONDS)//写入超时
+                            .readTimeout(60, TimeUnit.SECONDS)//读取超时
 
 
                             .cache(new Cache(sdcache.getAbsoluteFile(), cacheSize))
@@ -124,6 +124,7 @@ public class OkHttp3Util {
         //创建OkHttpClient请求对象
 
         OkHttpClient okHttpClient = getInstance();
+
 
         //MultipartBody多功能的请求实体对象,,,formBody只能传表单形式的数据
         MultipartBody.Builder builder = new MultipartBody.Builder();

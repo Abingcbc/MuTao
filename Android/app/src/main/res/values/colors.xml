@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+
+    <color name="card_bg">#FFFFFF</color>
     <!--覆盖颜色-->
     <color name="bgColor_overlay">#60000000</color>
     <!--窗口背景颜色-->
