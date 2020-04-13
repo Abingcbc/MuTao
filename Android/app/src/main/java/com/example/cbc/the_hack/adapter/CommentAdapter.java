@@ -26,13 +26,15 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         View view;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         view = inflater.inflate(R.layout.comment, parent, false);
+        ViewHolder viewHolder = new ViewHolder();
+        viewHolder.imageView = convertView.findViewById(R.id.comment_image);
+        viewHolder.textView = convertView.findViewById(R.id.comment_text);
         return view;
     }
 
     class ViewHolder {
         ImageView imageView;
         TextView textView;
-
 
     }
 }

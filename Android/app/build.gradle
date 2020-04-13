@@ -59,5 +59,17 @@ dependencies {
 
     implementation 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
 
-    implementation 'com.etsy.android.grid:library:1.0.5'
+    implementation 'com.github.gabrielemariotti.cards:cardslib-core:2.1.0'
+
+    //Optional for built-in cards
+    implementation 'com.github.gabrielemariotti.cards:cardslib-cards:2.1.0'
+
+    //Optional for RecyclerView
+    implementation 'com.github.gabrielemariotti.cards:cardslib-recyclerview:2.1.0'
+
+    //Optional for staggered grid view support
+    implementation 'com.github.gabrielemariotti.cards:cardslib-extra-staggeredgrid:2.1.0'
+
+    //Optional for drag and drop support
+    implementation 'com.github.gabrielemariotti.cards:cardslib-extra-dragdrop:2.1.0'
 }
