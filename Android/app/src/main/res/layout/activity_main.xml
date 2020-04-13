@@ -38,14 +38,32 @@
             android:src="@drawable/text"
             android:layout_marginTop="700px"/>
     </ViewFlipper>
-    <ImageButton
-        android:layout_width="134px"
-        android:layout_height="128px"
-        android:id="@+id/btn_change"
-        android:background="@drawable/camara"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="250px"
-        android:layout_alignParentBottom="true" />
+        android:layout_marginBottom="220px"
+        android:layout_alignParentBottom="true" >
+
+        <ImageButton
+            android:layout_width="134px"
+            android:layout_height="128px"
+            android:id="@+id/btn_change"
+            android:layout_margin="30px"
+            android:background="@drawable/camara"/>
+
+        <ImageButton
+            android:layout_width="134px"
+            android:layout_height="110px"
+            android:id="@+id/btn_community"
+            android:layout_marginTop="50px"
+            android:layout_marginLeft="30px"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/social"/>
+
+    </LinearLayout>
 
     <com.github.rahatarmanahmed.cpv.CircularProgressView
             xmlns:app="http://schemas.android.com/apk/res-auto"

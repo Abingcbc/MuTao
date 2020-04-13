@@ -1,5 +1,6 @@
 package com.example.cbc.the_hack
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -89,13 +90,16 @@ class MainActivity2 : AppCompatActivity(), CardStackListener {
 
         val rewind = findViewById<View>(R.id.rewind_button)
         rewind.setOnClickListener {
-            val setting = RewindAnimationSetting.Builder()
-                .setDirection(Direction.Bottom)
-                .setDuration(Duration.Normal.duration)
-                .setInterpolator(DecelerateInterpolator())
-                .build()
-            manager.setRewindAnimationSetting(setting)
-            cardStackView.rewind()
+//            val setting = RewindAnimationSetting.Builder()
+//                .setDirection(Direction.Bottom)
+//                .setDuration(Duration.Normal.duration)
+//                .setInterpolator(DecelerateInterpolator())
+//                .build()
+//            manager.setRewindAnimationSetting(setting)
+//            cardStackView.rewind()
+            var intent = Intent();
+            intent.setClass(this, CommunityActivity::class.java);
+            startActivity(intent);
         }
 
         val like = findViewById<View>(R.id.like_button)
@@ -132,12 +136,12 @@ class MainActivity2 : AppCompatActivity(), CardStackListener {
     }
 
     private fun paginate() {
-        val old = adapter.getSpots()
-        val new = old.plus(createPoems())
-        val callback = PoemDiffCallback(old, new)
-        val result = DiffUtil.calculateDiff(callback)
-        adapter.setSpots(new)
-        result.dispatchUpdatesTo(adapter)
+        //val old = adapter.getSpots()
+        //val new = old.plus(createPoems())
+        //val callback = PoemDiffCallback(old, new)
+        //val result = DiffUtil.calculateDiff(callback)
+        //adapter.setSpots(new)
+        //result.dispatchUpdatesTo(adapter)
     }
 
 
